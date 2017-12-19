@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">WeatherDemo</string>
+    <string name="api_url">https://api.darksky.net/forecast/3db0e239e0002981f8aac41cb85b36a1/13.0827,80.2707</string>
+</resources>
