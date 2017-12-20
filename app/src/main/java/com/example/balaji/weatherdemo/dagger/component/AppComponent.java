@@ -13,6 +13,6 @@ import dagger.Component;
 
 @Singleton
 @Component(modules = {NetworkModule.class,})
-public interface NetworkComponent {
+public interface AppComponent {
     void inject(WeatherActivity target);
 }

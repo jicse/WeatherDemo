@@ -5,23 +5,26 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.balaji.weatherdemo.R;
 import com.example.balaji.weatherdemo.model.Datum;
 import com.example.balaji.weatherdemo.model.WeatherPOJO;
+import com.example.balaji.weatherdemo.utils.AppUtils;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 /**
  * Created by balaji on 18/12/17.
  */
 
-public class WeatherAdapter  extends RecyclerView.Adapter<WeatherAdapter.ViewHolder>{
+public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.ViewHolder> {
     private final OnItemClickListener listener;
     private WeatherPOJO data;
     private Context context;
 
-    public WeatherAdapter(Context context,WeatherPOJO data, OnItemClickListener listener) {
+    public WeatherAdapter(Context context, WeatherPOJO data, OnItemClickListener listener) {
         this.data = data;
         this.listener = listener;
         this.context = context;
@@ -38,20 +41,12 @@ public class WeatherAdapter  extends RecyclerView.Adapter<WeatherAdapter.ViewHol
 
     @Override
     public void onBindViewHolder(WeatherAdapter.ViewHolder holder, int position) {
-      //  holder.click(data.get(position), listener);
-
-
-
-        holder.tvCity.setText(data.getDaily().getData().get(position).getTime().toString());
-
-        holder.tvDesc.setText(data.getDaily().getData().get(position).getSummary());
-
-        /*String images = data.get(position).getBackground();
-
-        Glide.with(context)
-                .load(images)
-                .into(holder.background);*/
-
+        Datum datum = data.getDaily().getData().get(position);
+        holder.click(datum, listener);
+        holder.tvDate.setText(AppUtils.convertTimeStampToDate(datum.getTime()));
+        holder.tvTempMin.setText(AppUtils.getTemp(context, datum.getTemperatureMin(), true));
+        holder.tvTempMax.setText(AppUtils.getTemp(context, datum.getTemperatureMax(), false));
+        holder.tvTimeZone.setText(data.getTimezone());
     }
 
 
@@ -66,17 +61,23 @@ public class WeatherAdapter  extends RecyclerView.Adapter<WeatherAdapter.ViewHol
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView tvCity, tvDesc;
-        ImageView background;
+
+        @BindView(R.id.date)
+        TextView tvDate;
+
+        @BindView(R.id.temp_min)
+        TextView tvTempMin;
+
+        @BindView(R.id.temp_max)
+        TextView tvTempMax;
+
+        @BindView(R.id.time_zone)
+        TextView tvTimeZone;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            tvCity = itemView.findViewById(R.id.city);
-            tvDesc = itemView.findViewById(R.id.hotel);
-            background = itemView.findViewById(R.id.image);
-
+            ButterKnife.bind(this, itemView);
         }
-
 
         public void click(final Datum datum, final OnItemClickListener listener) {
             itemView.setOnClickListener(new View.OnClickListener() {

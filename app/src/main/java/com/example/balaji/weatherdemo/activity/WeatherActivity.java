@@ -1,8 +1,8 @@
 
 package com.example.balaji.weatherdemo.activity;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -10,9 +10,6 @@ import android.widget.ProgressBar;
 
 import com.example.balaji.weatherdemo.R;
 import com.example.balaji.weatherdemo.adapters.WeatherAdapter;
-import com.example.balaji.weatherdemo.dagger.component.DaggerNetworkComponent;
-import com.example.balaji.weatherdemo.dagger.component.NetworkComponent;
-import com.example.balaji.weatherdemo.dagger.module.NetworkModule;
 import com.example.balaji.weatherdemo.model.Datum;
 import com.example.balaji.weatherdemo.model.WeatherPOJO;
 import com.example.balaji.weatherdemo.network.WeatherService;
@@ -21,41 +18,33 @@ import com.example.balaji.weatherdemo.presenter.WeatherView;
 
 import javax.inject.Inject;
 
-public class WeatherActivity extends AppCompatActivity implements WeatherView {
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
-    private RecyclerView list;
+public class WeatherActivity extends BaseActivity implements WeatherView {
 
-    @Inject
-    public WeatherService weatherService;
+    @BindView(R.id.weather_list)
+    RecyclerView weatherList;
 
+    @BindView(R.id.progress)
     ProgressBar progressBar;
 
-
-    private NetworkComponent component;
-    public final String BASE_URL = "https://api.darksky.net/";
+    @Inject
+    WeatherService weatherService;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        component = DaggerNetworkComponent.builder()
-                .networkModule(new NetworkModule(BASE_URL))
-                .build();
-        component.inject(WeatherActivity.this);
-        renderView();
-        init();
-
-    WeatherPresenter presenter = new WeatherPresenter(weatherService, this);
-        presenter.getWeatherList();
-    }
-
-    public void renderView() {
         setContentView(R.layout.activity_weather);
-        list = findViewById(R.id.list);
-        progressBar = findViewById(R.id.progress);
-    }
 
-    public void init() {
-        list.setLayoutManager(new LinearLayoutManager(this));
+        getComponent().inject(WeatherActivity.this);
+        ButterKnife.bind(this);
+
+        weatherList.setLayoutManager(new LinearLayoutManager(this));
+        weatherList.addItemDecoration(new DividerItemDecoration(this,
+                DividerItemDecoration.VERTICAL));
+        WeatherPresenter presenter = new WeatherPresenter(weatherService, this);
+        presenter.getWeatherList();
     }
 
 
@@ -83,7 +72,7 @@ public class WeatherActivity extends AppCompatActivity implements WeatherView {
             }
         });
 
-        list.setAdapter(adapter);
+        this.weatherList.setAdapter(adapter);
     }
 
 }
