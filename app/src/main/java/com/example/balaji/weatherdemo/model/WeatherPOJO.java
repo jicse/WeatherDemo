@@ -9,10 +9,10 @@ public class WeatherPOJO {
 
     @SerializedName("latitude")
     @Expose
-    private Double latitude;
+    private double latitude;
     @SerializedName("longitude")
     @Expose
-    private Double longitude;
+    private double longitude;
     @SerializedName("timezone")
     @Expose
     private String timezone;
@@ -28,21 +28,21 @@ public class WeatherPOJO {
     private Flags flags;
     @SerializedName("offset")
     @Expose
-    private Double offset;
+    private double offset;
 
-    public Double getLatitude() {
+    public double getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(Double latitude) {
+    public void setLatitude(double latitude) {
         this.latitude = latitude;
     }
 
-    public Double getLongitude() {
+    public double getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(Double longitude) {
+    public void setLongitude(double longitude) {
         this.longitude = longitude;
     }
 
@@ -79,11 +79,11 @@ public class WeatherPOJO {
         this.flags = flags;
     }
 
-    public Double getOffset() {
+    public double getOffset() {
         return offset;
     }
 
-    public void setOffset(Double offset) {
+    public void setOffset(double offset) {
         this.offset = offset;
     }
 

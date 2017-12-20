@@ -8,7 +8,7 @@ public class Currently {
 
     @SerializedName("time")
     @Expose
-    private Integer time;
+    private int time;
     @SerializedName("summary")
     @Expose
     private String summary;
@@ -17,52 +17,52 @@ public class Currently {
     private String icon;
     @SerializedName("precipIntensity")
     @Expose
-    private Integer precipIntensity;
+    private int precipIntensity;
     @SerializedName("precipProbability")
     @Expose
-    private Integer precipProbability;
+    private int precipProbability;
     @SerializedName("temperature")
     @Expose
-    private Double temperature;
+    private double temperature;
     @SerializedName("apparentTemperature")
     @Expose
-    private Double apparentTemperature;
+    private double apparentTemperature;
     @SerializedName("dewPoint")
     @Expose
-    private Double dewPoint;
+    private double dewPoint;
     @SerializedName("humidity")
     @Expose
-    private Double humidity;
+    private double humidity;
     @SerializedName("pressure")
     @Expose
-    private Double pressure;
+    private double pressure;
     @SerializedName("windSpeed")
     @Expose
-    private Double windSpeed;
+    private double windSpeed;
     @SerializedName("windGust")
     @Expose
-    private Double windGust;
+    private double windGust;
     @SerializedName("windBearing")
     @Expose
-    private Integer windBearing;
+    private int windBearing;
     @SerializedName("cloudCover")
     @Expose
-    private Double cloudCover;
+    private double cloudCover;
     @SerializedName("uvIndex")
     @Expose
-    private Integer uvIndex;
+    private int uvIndex;
     @SerializedName("visibility")
     @Expose
-    private Double visibility;
+    private double visibility;
     @SerializedName("ozone")
     @Expose
-    private Double ozone;
+    private double ozone;
 
-    public Integer getTime() {
+    public int getTime() {
         return time;
     }
 
-    public void setTime(Integer time) {
+    public void setTime(int time) {
         this.time = time;
     }
 
@@ -82,115 +82,115 @@ public class Currently {
         this.icon = icon;
     }
 
-    public Integer getPrecipIntensity() {
+    public int getPrecipIntensity() {
         return precipIntensity;
     }
 
-    public void setPrecipIntensity(Integer precipIntensity) {
+    public void setPrecipIntensity(int precipIntensity) {
         this.precipIntensity = precipIntensity;
     }
 
-    public Integer getPrecipProbability() {
+    public int getPrecipProbability() {
         return precipProbability;
     }
 
-    public void setPrecipProbability(Integer precipProbability) {
+    public void setPrecipProbability(int precipProbability) {
         this.precipProbability = precipProbability;
     }
 
-    public Double getTemperature() {
+    public double getTemperature() {
         return temperature;
     }
 
-    public void setTemperature(Double temperature) {
+    public void setTemperature(double temperature) {
         this.temperature = temperature;
     }
 
-    public Double getApparentTemperature() {
+    public double getApparentTemperature() {
         return apparentTemperature;
     }
 
-    public void setApparentTemperature(Double apparentTemperature) {
+    public void setApparentTemperature(double apparentTemperature) {
         this.apparentTemperature = apparentTemperature;
     }
 
-    public Double getDewPoint() {
+    public double getDewPoint() {
         return dewPoint;
     }
 
-    public void setDewPoint(Double dewPoint) {
+    public void setDewPoint(double dewPoint) {
         this.dewPoint = dewPoint;
     }
 
-    public Double getHumidity() {
+    public double getHumidity() {
         return humidity;
     }
 
-    public void setHumidity(Double humidity) {
+    public void setHumidity(double humidity) {
         this.humidity = humidity;
     }
 
-    public Double getPressure() {
+    public double getPressure() {
         return pressure;
     }
 
-    public void setPressure(Double pressure) {
+    public void setPressure(double pressure) {
         this.pressure = pressure;
     }
 
-    public Double getWindSpeed() {
+    public double getWindSpeed() {
         return windSpeed;
     }
 
-    public void setWindSpeed(Double windSpeed) {
+    public void setWindSpeed(double windSpeed) {
         this.windSpeed = windSpeed;
     }
 
-    public Double getWindGust() {
+    public double getWindGust() {
         return windGust;
     }
 
-    public void setWindGust(Double windGust) {
+    public void setWindGust(double windGust) {
         this.windGust = windGust;
     }
 
-    public Integer getWindBearing() {
+    public int getWindBearing() {
         return windBearing;
     }
 
-    public void setWindBearing(Integer windBearing) {
+    public void setWindBearing(int windBearing) {
         this.windBearing = windBearing;
     }
 
-    public Double getCloudCover() {
+    public double getCloudCover() {
         return cloudCover;
     }
 
-    public void setCloudCover(Double cloudCover) {
+    public void setCloudCover(double cloudCover) {
         this.cloudCover = cloudCover;
     }
 
-    public Integer getUvIndex() {
+    public int getUvIndex() {
         return uvIndex;
     }
 
-    public void setUvIndex(Integer uvIndex) {
+    public void setUvIndex(int uvIndex) {
         this.uvIndex = uvIndex;
     }
 
-    public Double getVisibility() {
+    public double getVisibility() {
         return visibility;
     }
 
-    public void setVisibility(Double visibility) {
+    public void setVisibility(double visibility) {
         this.visibility = visibility;
     }
 
-    public Double getOzone() {
+    public double getOzone() {
         return ozone;
     }
 
-    public void setOzone(Double ozone) {
+    public void setOzone(double ozone) {
         this.ozone = ozone;
     }
 

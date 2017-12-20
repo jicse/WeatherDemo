@@ -32,6 +32,8 @@ public class WeatherActivity extends BaseActivity implements WeatherView {
     @Inject
     WeatherService weatherService;
 
+    WeatherPresenter presenter;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,7 +45,7 @@ public class WeatherActivity extends BaseActivity implements WeatherView {
         weatherList.setLayoutManager(new LinearLayoutManager(this));
         weatherList.addItemDecoration(new DividerItemDecoration(this,
                 DividerItemDecoration.VERTICAL));
-        WeatherPresenter presenter = new WeatherPresenter(weatherService, this);
+        presenter = new WeatherPresenter(weatherService, this);
         presenter.getWeatherList();
     }
 
@@ -75,4 +77,9 @@ public class WeatherActivity extends BaseActivity implements WeatherView {
         this.weatherList.setAdapter(adapter);
     }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+        presenter.onStop();
+    }
 }
