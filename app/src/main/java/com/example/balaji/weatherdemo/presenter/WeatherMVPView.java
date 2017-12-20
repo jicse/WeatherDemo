@@ -6,7 +6,7 @@ import com.example.balaji.weatherdemo.model.WeatherPOJO;
  * Created by balaji on 19/12/17.
  */
 
-public interface WeatherView {
+public interface WeatherMVPView {
 
     void showLoader();
 

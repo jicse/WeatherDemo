@@ -38,7 +38,7 @@ public class WeatherService {
                 .subscribe(new Subscriber<WeatherPOJO>() {
                     @Override
                     public void onCompleted() {
-
+                        callback.onError("completed");
                     }
 
                     @Override

@@ -7,21 +7,21 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.example.balaji.weatherdemo.R;
 import com.example.balaji.weatherdemo.adapters.WeatherAdapter;
 import com.example.balaji.weatherdemo.model.Datum;
 import com.example.balaji.weatherdemo.model.WeatherPOJO;
-import com.example.balaji.weatherdemo.network.WeatherService;
+import com.example.balaji.weatherdemo.presenter.WeatherMVPView;
 import com.example.balaji.weatherdemo.presenter.WeatherPresenter;
-import com.example.balaji.weatherdemo.presenter.WeatherView;
 
 import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class WeatherActivity extends BaseActivity implements WeatherView {
+public class WeatherActivity extends BaseActivity implements WeatherMVPView {
 
     @BindView(R.id.weather_list)
     RecyclerView weatherList;
@@ -30,8 +30,6 @@ public class WeatherActivity extends BaseActivity implements WeatherView {
     ProgressBar progressBar;
 
     @Inject
-    WeatherService weatherService;
-
     WeatherPresenter presenter;
 
     @Override
@@ -42,13 +40,14 @@ public class WeatherActivity extends BaseActivity implements WeatherView {
         getComponent().inject(WeatherActivity.this);
         ButterKnife.bind(this);
 
+        presenter.setView(this);
+        presenter.getWeatherList();
+
         weatherList.setLayoutManager(new LinearLayoutManager(this));
         weatherList.addItemDecoration(new DividerItemDecoration(this,
                 DividerItemDecoration.VERTICAL));
-        presenter = new WeatherPresenter(weatherService, this);
-        presenter.getWeatherList();
-    }
 
+    }
 
     @Override
     public void showLoader() {
@@ -62,7 +61,7 @@ public class WeatherActivity extends BaseActivity implements WeatherView {
 
     @Override
     public void onFailure(String appErrorMessage) {
-
+        Toast.makeText(this, appErrorMessage, Toast.LENGTH_SHORT).show();
     }
 
     @Override
